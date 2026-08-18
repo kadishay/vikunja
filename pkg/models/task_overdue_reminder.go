@@ -40,7 +40,7 @@ func getUndoneOverdueTasks(s *xorm.Session, now time.Time, cond builder.Cond) (u
 	err = s.
 		Where("due_date is not null AND due_date < ? AND projects.is_archived = false", nextMinute.Add(time.Hour*38).Format(dbTimeFormat)).
 		Join("LEFT", "projects", "projects.id = tasks.project_id").
-		And("done = false").
+		And("done = true").
 		Find(&tasks)
 	if err != nil {
 		return

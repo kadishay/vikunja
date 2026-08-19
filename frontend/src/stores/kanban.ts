@@ -170,7 +170,7 @@ export const useKanbanStore = defineStore('kanban', () => {
 		if(typeof currentView === 'undefined') return
 		
 		// If the task is done, make sure it is in the done bucket
-		if (task.done && currentView.doneBucketId !== 0 && currentTaskBucket.id !== currentView.doneBucketId) {
+		if (task.done && currentView.doneBucketId !== 0 && currentTaskBucket.id === currentView.doneBucketId) {
 			moveTaskToBucket(task, currentView.doneBucketId)
 		}
 
